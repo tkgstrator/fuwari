@@ -9,6 +9,7 @@ import rehypeSlug from "rehype-slug"
 import remarkMath from "remark-math"
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs"
 import svelte from "@astrojs/svelte"
+import remarkMermaid from "@southball/remark-mermaid"
 
 const oklchToHex = (str) => {
   const DEFAULT_HUE = 250
@@ -22,8 +23,11 @@ const oklchToHex = (str) => {
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://fuwari.vercel.app/",
-  base: "/",
+  site: 'https://blog.tkgstrator.work/',
+  base: '/',
+  prefetch: {
+    defaultStrategy: 'viewport',
+  },
   integrations: [
     tailwind(),
     icon({
@@ -36,11 +40,12 @@ export default defineConfig({
     }),
     Compress({
       Image: false,
+      HTML: true,
     }),
     svelte(),
   ],
   markdown: {
-    remarkPlugins: [remarkMath, remarkReadingTime],
+    remarkPlugins: [remarkMath, remarkReadingTime, [remarkMermaid, { themes: ['dark'] }]],
     rehypePlugins: [
       rehypeKatex,
       rehypeSlug,

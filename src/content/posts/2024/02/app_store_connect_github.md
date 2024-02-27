@@ -3,7 +3,7 @@ title: macOSのVirtual MachineをmacOS上に立てる
 published: 2024-02-27
 description: 'macOSのVirtual MachineをmacOS上に立ててGitHub Actionsを実行します'
 image: ''
-tags: [Xcode, GitHub, AppStoreConnect]
+tags: [Xcode, macOS]
 category: Tech
 draft: false 
 ---

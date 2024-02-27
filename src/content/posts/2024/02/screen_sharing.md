@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Tunnel経由でScreen Sharingを利用しよう
 published: 2024-02-27
-description: ''
+description: 'macOSのデフォルト機能のScreen Sharingを強制的にリモートから使う計画です'
 image: ''
 tags: [macOS, Cloudflare, VNC]
 category: Tech

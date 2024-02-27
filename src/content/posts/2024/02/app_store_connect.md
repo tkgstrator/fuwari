@@ -1,10 +1,10 @@
 ---
 title: GitLab CIでApp Store Connectにアプリをデプロイする 
 published: 2024-02-26
-description: ''
+description: ぶっちゃけ書きかけです
 image: ''
-tags: ['Xcode', 'GitLab', 'AppStoreConnect', 'IPA']
-category: 'Programming'
+tags: [Xcode, GitLab, AppStoreConnect, Fastlane]
+category: Tech
 draft: false 
 ---
 

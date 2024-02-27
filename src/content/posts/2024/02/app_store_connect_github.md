@@ -1,10 +1,10 @@
 ---
-title: GitHub ActionsでApp Store Connectにアプリをデプロイする 
+title: macOSのVirtual MachineをmacOS上に立てる
 published: 2024-02-27
-description: ''
+description: 'macOSのVirtual MachineをmacOS上に立ててGitHub Actionsを実行します'
 image: ''
-tags: ['Xcode', 'GitLab', 'AppStoreConnect', 'IPA']
-category: 'Programming'
+tags: [Xcode, GitHub, AppStoreConnect]
+category: Tech
 draft: false 
 ---
 
@@ -176,5 +176,19 @@ XcodesでXcodeをインストールすると例えばXcode15.2は`/Applications/
 さらに言えば`xcode-select -s`は`sudo`が必須なのですが、これをやるといちいちSelf-Hostedのマシンでパスワードが要求されてイライラします。
 
 解決したらまた追記しようと思います。
+
+## GitHub Runner
+
+[公式ドキュメント](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/adding-self-hosted-runners)を読むとよいです。ちょっと古いかもしれないけど大体同じです。
+
+YAMLで指定するXcodeはインストールしておきましょう。
+
+基本的にfastlaneでビルドすることになると思うのでRubyも必須になります。
+
+立ち上げてジョブを投げるとちゃんとビルドできます。
+
+Xcode15以降だとインストール時にiOS向けのSDKが入っていなかったりするので入れておきましょう。
+
+別記事で解説したfastlaneの使い方と踏まえて無事にビルドできるようになりました！！
 
 記事は以上。

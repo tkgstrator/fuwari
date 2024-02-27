@@ -145,4 +145,36 @@ macOSのイメージをダウンロードしていると思われるのですが
 
 Rubyはfastlaneを動作させるために必要になります。
 
-## GitHub Runner
+```zsh
+brew install swiftlint
+brew install swiftformat
+brew install ruby
+brew link --overwrite --force ruby
+```
+
+Rubyに関してはbrewでインストールしたあとにbrewでインストールしたものを利用するようにしないとbundle installでシステム領域に書き込もうとして大変なことになるので必ず最後のコマンドを実行しておきましょう。
+
+```zsh
+gem install bundler
+```
+
+も実行しておくと良いことがあるかもしれません。
+
+### 注意点
+
+XcodesでXcodeをインストールすると例えばXcode15.2は`/Applications/Xcode-15.2.0.app/Contents/Developer`というパスにインストールされます。
+
+なので当然GitHub Actionsでバージョン指定をする場合もこれを利用するのですが、GitHub謹製のRunnerとSelf-HostedのRunnerではディレクトリが異なります。
+
+| ランナー       | パス                           | 
+| -------------- | ------------------------------ | 
+| Self-Hosted    | /Applications/Xcode-15.2.0.app | 
+| GitHub Actions | /Applications/Xcode_15.2.app   | 
+
+うーん、この差異をなんとかできないかなという感じですね。
+
+さらに言えば`xcode-select -s`は`sudo`が必須なのですが、これをやるといちいちSelf-Hostedのマシンでパスワードが要求されてイライラします。
+
+解決したらまた追記しようと思います。
+
+記事は以上。

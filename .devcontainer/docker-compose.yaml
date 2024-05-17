@@ -1,0 +1,13 @@
+services:
+  fuwari:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - node_modules_cached:/home/bun/app/node_modules
+      - ../:/home/bun/app:cached
+    tty: true
+    stdin_open: true
+
+volumes:
+  node_modules_cached:

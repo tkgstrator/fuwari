@@ -3,6 +3,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        BUN_VERSION: 1.1.15
+        NODE_VERSION: 20.14.0 
     volumes:
       - node_modules_cached:/home/bun/app/node_modules
       - ../:/home/bun/app:cached

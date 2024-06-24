@@ -11,7 +11,7 @@ import rehypeComponents from 'rehype-components' /* Render the custom directive 
 import rehypeKatex from 'rehype-katex'
 import rehypeSlug from 'rehype-slug'
 import remarkDirective from 'remark-directive' /* Handle directives */
-import remarkDirectiveRehype from 'remark-directive-rehype' /* Pass directives to rehype */
+import remarkGithubAdmonitionsToDirectives from 'remark-github-admonitions-to-directives'
 import remarkMath from 'remark-math'
 import { AdmonitionComponent } from './src/plugins/rehype-component-admonition.mjs'
 import { GithubCardComponent } from './src/plugins/rehype-component-github-card.mjs'
@@ -60,7 +60,13 @@ export default defineConfig({
     sitemap(),
   ],
   markdown: {
-    remarkPlugins: [remarkMath, remarkReadingTime, remarkGithubAdmonitionsToDirectives, remarkDirective, parseDirectiveNode],
+    remarkPlugins: [
+      remarkMath,
+      remarkReadingTime,
+      remarkGithubAdmonitionsToDirectives,
+      remarkDirective,
+      parseDirectiveNode,
+    ],
     rehypePlugins: [
       rehypeKatex,
       rehypeSlug,

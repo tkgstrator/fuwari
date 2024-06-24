@@ -21,7 +21,7 @@
     "@fontsource-variable/jetbrains-mono": "^5.0.20",
     "@fontsource/roboto": "^5.0.12",
     "@swup/astro": "^1.4.0",
-    "astro": "^4.4.15",
+    "astro": "^4.11.0",
     "astro-compress": "^2.2.15",
     "astro-diagram": "^0.7.0",
     "astro-icon": "1.1.0",

@@ -8,9 +8,7 @@
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
-    "new-post": "node scripts/new-post.js",
-    "format": "biome format --write ./src",
-    "lint": "biome check --apply ./src"
+    "new-post": "node scripts/new-post.js"
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
@@ -61,7 +59,8 @@
     "@types/mdast": "^4.0.4",
     "@types/sanitize-html": "^2.11.0",
     "remark-github-admonitions-to-directives": "^1.0.5",
-    "stylus": "^0.63.0"
+    "stylus": "^0.63.0",
+    "wrangler": "^3.70.0"
   },
   "pnpm": {
     "overrides": {

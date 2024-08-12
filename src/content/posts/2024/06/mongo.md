@@ -5,7 +5,7 @@ description: もっと良い方法があると思うのですが、とりあえ�
 category: Programming
 tags: [Docker, MongoDB]
 ---
-
+git filter-branch -f --env-filter "GIT_AUTHOR_NAME='tkgstrator'; GIT_AUTHOR_EMAIL='nasawake.am@gmail.com'; GIT_COMMITTER_NAME='tkgstrator'; GIT_COMMITTER_EMAIL='nasawake.am@gmail.com';" HEAD
 ## MongoDB
 
 MongoDBにはレプリカセットという仕組みがあります。

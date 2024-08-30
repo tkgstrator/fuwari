@@ -3,12 +3,18 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro dev --host",
     "start": "astro dev",
     "build": "astro build && pagefind --site dist",
-    "preview": "astro preview",
+    "preview": "wrangler pages dev dist",
     "astro": "astro",
-    "new-post": "node scripts/new-post.js"
+    "new-post": "node scripts/new-post.js",
+    "prepare": "husky"
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
@@ -48,6 +54,9 @@
   "devDependencies": {
     "@astrojs/ts-plugin": "^1.8.0",
     "@biomejs/biome": "1.8.2",
+    "@commitlint/cli": "19.4.1",
+    "@commitlint/config-conventional": "19.4.1",
+    "@commitlint/cz-commitlint": "19.4.0",
     "@iconify-json/fa6-brands": "^1.1.19",
     "@iconify-json/fa6-regular": "^1.1.19",
     "@iconify-json/fa6-solid": "^1.1.21",
@@ -58,9 +67,11 @@
     "@types/markdown-it": "^14.1.1",
     "@types/mdast": "^4.0.4",
     "@types/sanitize-html": "^2.11.0",
+    "husky": "^9.1.5",
+    "lint-staged": "^15.2.9",
     "remark-github-admonitions-to-directives": "^1.0.5",
     "stylus": "^0.63.0",
-    "wrangler": "^3.70.0"
+    "wrangler": "3.18.0"
   },
   "pnpm": {
     "overrides": {

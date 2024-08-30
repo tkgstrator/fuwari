@@ -37,7 +37,7 @@ git filter-branch -f --commit-filter 'git commit-tree -S "$@";' HEAD
 俺様の署名で全部上書きする魔法。
 
 ```zsh
-git filter-branch -f --env-filter "GIT_AUTHOR_NAME='$(git config --get user.name)'; GIT_AUTHOR_EMAIL='(git config --get user.email)'; GIT_COMMITTER_NAME='$(git config --get user.name)'; GIT_COMMITTER_EMAIL='$(git config --get user.email)';" HEAD
+git filter-branch -f --env-filter "GIT_AUTHOR_NAME='$(git config --get user.name)'; GIT_AUTHOR_EMAIL='$(git config --get user.email)'; GIT_COMMITTER_NAME='$(git config --get user.name)'; GIT_COMMITTER_EMAIL='$(git config --get user.email)'; git commit-tree -S "$@";" HEAD
 ```
 
 コミットのメールアドレスとユーザー名を全部自分に書き換える魔法。

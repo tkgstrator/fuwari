@@ -42,6 +42,12 @@ git filter-branch -f --env-filter "GIT_AUTHOR_NAME='$(git config --get user.name
 
 コミットのメールアドレスとユーザー名を全部自分に書き換える魔法。
 
+これらを組み合わせるとコミッターを変えつつ、署名もできる。
+
+```zsh
+git filter-branch -f --commit-filter 'git commit-tree -S "$@";' --env-filter "GIT_AUTHOR_NAME='$(git config --get user.name)'; GIT_AUTHOR_EMAIL='$(git config --get user.email)'; GIT_COMMITTER_NAME='$(git config --get user.name)'; GIT_COMMITTER_EMAIL='$(git config --get user.email)'; " HEAD
+```
+
 ### ブランチ削除
 
 #### マージ済みブランチ削除

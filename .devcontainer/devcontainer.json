@@ -1,8 +1,6 @@
 {
   "name": "Blog",
-  "dockerComposeFile": [
-    "docker-compose.yaml"
-  ],
+  "dockerComposeFile": ["docker-compose.yaml"],
   "service": "fuwari",
   "workspaceFolder": "/home/bun/app",
   "shutdownAction": "stopCompose",
@@ -36,7 +34,8 @@
         "antfu.file-nesting",
         "biomejs.biome",
         "eamodio.gitlens",
-        "astro-build.astro-vscode"
+        "astro-build.astro-vscode",
+        "wdhongtw.gpg-indicator"
       ],
       "settings": {
         "betterTypeScriptErrors.prettify": true,
@@ -54,6 +53,7 @@
         "files.watcherExclude": {
           "**/node_modules/**": true
         },
+        "gpgIndicator.enablePassphraseCache": true,
         "scm.defaultViewMode": "tree",
         "[javascript]": {
           "editor.defaultFormatter": "biomejs.biome"

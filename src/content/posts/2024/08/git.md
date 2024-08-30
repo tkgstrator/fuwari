@@ -1,5 +1,5 @@
 ---
-title: GitHubでをより便利にする備忘録
+title: GitHubをより便利にする備忘録
 published: 2024-08-30
 description: GitHubの設定を忘れてしまうのでメモしておきます
 category: Tech

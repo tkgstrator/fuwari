@@ -35,6 +35,9 @@
         "biomejs.biome",
         "eamodio.gitlens",
         "astro-build.astro-vscode",
+        "bierner.markdown-mermaid",
+        "bierner.markdown-preview-github-styles",
+        "jebbs.markdown-extended",
         "wdhongtw.gpg-indicator"
       ],
       "settings": {

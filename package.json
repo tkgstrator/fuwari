@@ -20,12 +20,12 @@
     "@astrojs/check": "^0.9.3",
     "@astrojs/rss": "^4.0.7",
     "@astrojs/sitemap": "^3.1.6",
-    "@astrojs/svelte": "^5.7.0",
-    "@astrojs/tailwind": "^5.1.0",
-    "@fontsource-variable/jetbrains-mono": "^5.0.23",
-    "@fontsource/roboto": "^5.0.15",
+    "@astrojs/svelte": "^5.7.1",
+    "@astrojs/tailwind": "^5.1.1",
+    "@fontsource-variable/jetbrains-mono": "^5.1.0",
+    "@fontsource/roboto": "^5.1.0",
     "@swup/astro": "^1.4.1",
-    "astro": "^4.15.4",
+    "astro": "^4.15.9",
     "astro-compress": "^2.3.1",
     "astro-diagram": "^0.7.0",
     "astro-icon": "1.1.1",
@@ -33,7 +33,7 @@
     "hastscript": "^9.0.0",
     "markdown-it": "^14.1.0",
     "mdast-util-to-string": "^4.0.0",
-    "mermaid": "^11.2.0",
+    "mermaid": "^11.2.1",
     "overlayscrollbars": "^2.10.0",
     "pagefind": "^1.1.1",
     "reading-time": "^1.5.0",
@@ -47,13 +47,13 @@
     "sanitize-html": "^2.13.0",
     "sharp": "^0.33.5",
     "svelte": "^4.2.19",
-    "tailwindcss": "^3.4.11",
+    "tailwindcss": "^3.4.13",
     "typescript": "^5.6.2",
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
     "@astrojs/ts-plugin": "^1.10.2",
-    "@biomejs/biome": "1.8.3",
+    "@biomejs/biome": "1.9.2",
     "@commitlint/cli": "19.5.0",
     "@commitlint/config-conventional": "19.5.0",
     "@commitlint/cz-commitlint": "19.5.0",
@@ -71,7 +71,7 @@
     "lint-staged": "^15.2.10",
     "remark-github-admonitions-to-directives": "^2.0.0",
     "stylus": "^0.63.0",
-    "wrangler": "3.76.0"
+    "wrangler": "3.78.12"
   },
   "pnpm": {
     "overrides": {

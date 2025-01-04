@@ -38,7 +38,8 @@
         "biomejs.biome",
         "eamodio.gitlens",
         "astro-build.astro-vscode",
-        "wdhongtw.gpg-indicator"
+        "wdhongtw.gpg-indicator",
+        "svelte.svelte-vscode"
       ],
       "settings": {
         "betterTypeScriptErrors.prettify": true,

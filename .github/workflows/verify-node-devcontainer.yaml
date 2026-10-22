@@ -1,0 +1,64 @@
+name: Verify Node devcontainer
+
+on:
+  pull_request:
+    branches: [develop, master, main]
+    paths:
+      - .devcontainer/**
+      - .github/workflows/verify-node-devcontainer.yaml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      NODE_VERSION: 22.23.4
+      NODE_FEATURE: ghcr.io/devcontainers/features/node:1.5.0
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24.22.1
+      - name: Verify devcontainer Node
+        shell: bash
+        run: |
+          set -euo pipefail
+          umask 077
+          tmp="$(mktemp -d "${RUNNER_TEMP}/node-security.XXXXXX")"
+          export TMPDIR="$tmp"
+          name="verify-node-$(cat /proc/sys/kernel/random/uuid)"
+          trap 'docker rm -f "$name" >/dev/null 2>&1 || true; rm -rf "$tmp"' EXIT
+          last_json() { node -e 'const l=require("fs").readFileSync(process.argv[1],"utf8").split("\n").filter(x=>x.trim().startsWith("{")).pop();process.stdout.write(l||"")' "$1"; }
+          devcontainer() { npm exec --yes --package @devcontainers/cli@0.89.0 -- devcontainer "$@"; }
+
+          # Never print the config: remoteEnv may contain substituted secrets.
+          devcontainer read-configuration --workspace-folder . --log-level info > "$tmp/config.json"
+          LAST="$(last_json "$tmp/config.json")" node -e '
+            let c;try{c=JSON.parse(process.env.LAST)}catch{console.error("Invalid devcontainer configuration JSON");process.exit(1)}
+            const v=c.configuration?.features?.[process.env.NODE_FEATURE]?.version;
+            if(typeof v!=="string"||!/^\d+\.\d+\.\d+$/.test(v)||v!==process.env.NODE_VERSION){console.error("Node feature version is not the expected security patch");process.exit(1)}
+            console.log("Node feature version:",v)'
+
+          # Real build applying the full devcontainer config (features + compose build args).
+          devcontainer build --workspace-folder . --log-level info > "$tmp/build.json"
+          image="$(LAST="$(last_json "$tmp/build.json")" node -e '
+            let b;try{b=JSON.parse(process.env.LAST)}catch{console.error("Invalid devcontainer build JSON");process.exit(1)}
+            const n=[].concat(b.imageName??[]).filter(x=>typeof x==="string"&&x.trim()).pop();
+            if(!n){console.error("No imageName in build output");process.exit(1)}
+            console.log(n)')"
+          docker image inspect "$image" >/dev/null
+
+          # Isolated run of the built image: no env, secrets, network or login shell.
+          docker run --pull never --rm --network none --name "$name" --entrypoint /bin/sh "$image" -c '
+            set -eu
+            case "$(readlink -f "$(command -v node)")" in */bun) echo "node resolves to bun" >&2; exit 1;; esac
+            node -e "if(process.release.name!==\"node\"||process.versions.bun)process.exit(1)"
+            [ "$(node -p "process.versions.node + (process.versions.bun ? \" BUN\" : \"\")")" = "$1" ]
+            [ "$(node --version)" = "v$1" ]
+            echo "Node v$1 verified"' sh "$NODE_VERSION"
